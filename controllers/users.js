@@ -22,6 +22,11 @@ const createUser = async (reqData) => {
     const resp = await userModel.createUser(validInput);
     await userModel.createPermission({user_id: resp[0], role_id: reqData.role_id});
     const response = await userModel.fetchUserName(resp[0]);
+    let token_data = {};
+    token_data.user_name = validInput.email;
+    token_data.password = resp[0];
+    const new_token = await userModel.genToken(token_data);
+    await userModel.createUserToken(new_token);
     return successResponse(201, response, { user_roles: ['customer'], email: validInput.email}, 'userRegistered')
   } catch (error) {
     console.error('error -> ', logStruct('createUser', error))
@@ -172,11 +177,11 @@ const loginUser = async (reqData) => {
     console.log(isFlagged[0].flag)
     if (!matched) {
       return errorResponse(401, 'wrongPassword');
-    } else {
-    }
-    if (isFlagged[0].flag !== 1){
+    } 
+    if (isFlagged[0].flag == 0){
       return errorResponse(403, 'user flagged contact admin for asistance');
     }
+    await userModel.updateVerToken(response[0].email);
     const role_response = await userModel.getUserPermission(response[0].id);
     const user_roles = role_response.map(el => el.role);
     const p = successResponse(200, response, {user_roles, email: response[0].email});

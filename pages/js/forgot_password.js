@@ -7,7 +7,7 @@
               $("#newPassword").val('')
               $("#confirmPassword").val('')
             }
-              let AUTH_BACKEND_URL = 'https://agro-africa.io';
+              let AUTH_BACKEND_URL = 'http://localhost:5000';
               let email = document.getElementById('username').value
               let password = document.getElementById('newPassword').value
 

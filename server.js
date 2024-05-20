@@ -2,7 +2,7 @@
 
 // require('dotenv').config();
 const http = require('http');
-const port = process.env.SRV_PORT || '3000';
+const port = process.env.SRV_PORT || '5000';
 
 const app = require('./app');
 

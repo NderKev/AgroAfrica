@@ -1,10 +1,10 @@
 $(document).ready(function(){
     var isLoggedIn = localStorage.getItem("agroAfric_user_name");
-    let custProf = document.getElementById("customerProfile")
+    let custProf = document.getElementById("user_profile")
     let custProds = document.getElementById("customerProducts")
     let custShips = document.getElementById("customerShipments")
     let custOrds = document.getElementById("customerOrders")
-    let custPays = document.getElementById("customerPayments")
+    let custPays = document.getElementById("user_settings")
     let custTrans = document.getElementById("customerTransactions")
     let custTracks = document.getElementById("customerTracking")
     let custCart = document.getElementById("customerCart")
@@ -63,7 +63,7 @@ $(document).ready(function(){
       }
       var UserName = localStorage.getItem("agroAfric_user_name");
      $("#name").text(UserName)
-      let AUTH_BACKEND_URL = 'https://agro-africa.io';
+      let AUTH_BACKEND_URL = 'http://localhost:5000';
       let user_id = localStorage.getItem("user_id");
       $.ajax({
             url: `${AUTH_BACKEND_URL}/agroAfrica/v1/order/activeCart/${user_id}`,
@@ -140,7 +140,7 @@ $(custShips).attr("href", '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/
 
 $(custOrds).attr("href", '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/'+localStorage.getItem('user_id') + '/orders')
 
-$(custPays).attr("href", '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/'+localStorage.getItem('user_id') + '/payments')
+$(custPays).attr("href", '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/profile/'+localStorage.getItem('user_id') + '/update')
 
 $(custTrans).attr("href", '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/'+localStorage.getItem('user_id') + '/transactions')
 
@@ -885,7 +885,7 @@ setInterval(function(){
 }, 1000);
 
 setInterval(function(){
-  const BACKEND_URL = 'https://agro-africa.io';
+  const BACKEND_URL = 'http://localhost:5000';
     $.ajax({
       url: `${AUTH_BACKEND_URL}/agroAfrica/v1/user/${localStorage.getItem("role")}/profile/${localStorage.getItem("user_id")}/`,
       dataType: "JSON",

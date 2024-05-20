@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  let AUTH_BACKEND_URL = 'https://agro-africa.io';
+  let AUTH_BACKEND_URL = 'http://localhost:5000';
   function refresh(){
     $("#fname").val('')
     $("#lname").val('')
@@ -14,7 +14,7 @@ $(document).ready(function(){
   if (isLoggedIn){
   var UserName = localStorage.getItem("agroAfric_user_name");
   $("#name").text(UserName)
-  //  window.location.href = 'kidney_beans.html?id='+localStorage.getItem('user_id');///https://agro-africa.io//agroAfrica/v1/user/profile/" + //localStorage.getItem('user_id') + "complete_profile.html";
+  //  window.location.href = 'kidney_beans.html?id='+localStorage.getItem('user_id');///http://localhost:5000//agroAfrica/v1/user/profile/" + //localStorage.getItem('user_id') + "complete_profile.html";
       window.location.href = '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/profile/'+localStorage.getItem('user_id') + '/';
   }
   })
@@ -28,10 +28,10 @@ $(document).ready(function(){
     let role = document.getElementById('role').value
     let role_id = 0;
     if (role === 'buyer'){
-      role_id = 3;
+      role_id = 2;
     }
     else{
-      role_id = 2;
+      role_id = 3;
     }
     let name = firstName + " " + lastName;
     console.log(name);
@@ -91,7 +91,7 @@ $(document).ready(function(){
             reqData.name = name;
             reqData.logo = results.data[0].picture;
             reqData.phone = "+254712345678";
-            reqData.state = results.data[0].state;
+            reqData.state = "zzzzzz";
             reqData.street = "xxxx";
             reqData.city = "yyyy";
             reqData.zipcode = "tttttt";
@@ -192,7 +192,7 @@ function registerSeller(data){
     })
   }
 
-  /** var BACKEND_URL = 'https://agro-africa.io';
+  /** var BACKEND_URL = 'http://localhost:5000';
    function getSession(){
      var expires = null;
      $.ajax({
@@ -263,6 +263,7 @@ function registerSeller(data){
         if (results.success = true && results.data.length > 0  || results.status === 201 && results.data.length > 0 || results.status === 200 && results.data.length > 0){
           localStorage.setItem('agroAfric_user_name' , email);
           localStorage.setItem('user_id', results.data[0].id)
+          
           /** var sess = getSession();
           if(sess){
           console.log(sess);
@@ -297,7 +298,7 @@ function registerSeller(data){
           //alert(refreshJWT);
           refreshLogin();
           //var usertype =
-          //window.location.href = "complete_profile.html" //"https://agro-africa.io/agroAfrica/v1/user/profile/:id/complete_profile.html";
+          //window.location.href = "complete_profile.html" //"http://localhost:5000/agroAfrica/v1/user/profile/:id/complete_profile.html";
           window.location.href = '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/profile/'+localStorage.getItem('user_id') + '/';
           //window.location.href = '/profile/id?'+localStorage.getItem('user_id') + '/';
         }
@@ -373,7 +374,7 @@ setInterval(function(){
 }, 100);
 
 $(document).ready(function(){
-  const AUTH_BACKEND_URL = 'https://agro-africa.io';
+  const AUTH_BACKEND_URL = 'http://localhost:5000';
   let profile = "profile";
     $.ajax({
       url: `${AUTH_BACKEND_URL}/agroAfrica/v1/user/${localStorage.getItem("role")}/${profile}/${localStorage.getItem("user_id")}/`,
@@ -470,8 +471,8 @@ window.location.href = "/";
 else{
 var UserName = localStorage.getItem("agroAfric_user_name");
 $("#name").text(UserName)
-//window.location.href = 'complete_profile.html?id='+user;///https://agro-africa.io//agroAfrica/v1/user/profile/" + //localStorage.getItem('user_id') + "complete_profile.html";
-//  window.location.href = 'https://agro-africa.io/agroAfrica/v1/user/profile/'+localStorage.getItem('user_id') +'/' + 'complete_profile.html';
+//window.location.href = 'complete_profile.html?id='+user;///http://localhost:5000//agroAfrica/v1/user/profile/" + //localStorage.getItem('user_id') + "complete_profile.html";
+//  window.location.href = 'http://localhost:5000/agroAfrica/v1/user/profile/'+localStorage.getItem('user_id') +'/' + 'complete_profile.html';
 window.location.href = '/profile/'+localStorage.getItem('user_id') +'/' + 'complete_profile.html';
 }
 }) */

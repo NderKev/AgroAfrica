@@ -435,6 +435,18 @@ const fetchTradedItemsByUser = async (reqData) => {
   }
 };
 
+const fetchShipmentDestination = async (reqData) => {
+  try {
+    //const validInput = validateUserId(reqData);
+    const response = await orderModel.getItemSoldLocation(reqData);
+    return successResponse(200, response)
+  } catch (error) {
+    console.error('error -> ', logStruct('fetchShipmentDestination', error))
+    return errorResponse(error.status, error.message);
+  }
+};
+
+
 // db scripts
 // const dbScripts = require('../lib/db_script')
 
@@ -468,5 +480,6 @@ module.exports = {
   createTradedItem,
   updateTradedItem,
   fetchTradedItemsBySeller,
-  fetchTradedItemsByUser
+  fetchTradedItemsByUser,
+  fetchShipmentDestination
 }

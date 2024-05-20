@@ -12,19 +12,19 @@ const url = require('url');
 // CRUD user
 router.post('/register',  async (req, res) => {
   const response = await userController.createUser(req.body);
-
+  
   if (response.success && response.meta) {
     req.session.email = response.meta.email;
     req.session.password = req.body.password;
     req.session.user_roles = response.meta.user_roles;
   }
   const regToken = await authController.generateToken(req.body);
-       var packageReq = {
+    /**    var packageReq = {
          token : regToken.data.token.token,
          email : regToken.data.token.email,
          user : req.body.name
        }
-      await authController.sendVerification(packageReq);
+      await authController.sendVerification(packageReq); **/
   return res.status(response.status).send(response)
 });
 
@@ -34,7 +34,7 @@ router.get('/fetch/:id', authenticator, async (req, res) => {
   return res.status(response.status).send(response)
 });
 
-router.post('/updatePassword', authenticator, async (req, res) => {
+router.post('/updatePassword', auth, async (req, res) => {
   const response = await userController.updatePassword(req.body)
   return res.status(response.status).send(response)
 })
@@ -340,7 +340,7 @@ router.get('/seller/:id/warehouses', authenticator, allowSeller, async (req, res
   res.sendFile(path.join(__dirname, '../pages' , 'seller_warehouses.html'));
 });
 
-router.get('/seller/:id/transactions', authenticator, allowSeller, async (req, res) => {
+router.get('/seller/:id/transactions', authenticator,  allowSeller, async (req, res) => {
   req.body.id = Number(req.params.id);
   res.sendFile(path.join(__dirname, '../pages' , 'transactions.html'));
 });

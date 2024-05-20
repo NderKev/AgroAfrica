@@ -1,10 +1,10 @@
 $(document).ready(function(){
     var isLoggedIn = localStorage.getItem("agroAfric_user_name");
-    let sellProf = document.getElementById("sellerProfile")
+    let sellProf = document.getElementById("seller_profile")
     let addProds = document.getElementById("addNewProducts")
     let sellProds = document.getElementById("sellerProducts")
     let sellSale = document.getElementById("sellerSales")
-    let sellDisp = document.getElementById("sellerDispatch")
+    let sellDisp = document.getElementById("seller_settings")
     let sellWare = document.getElementById("sellerWarehouses")
     let sellTrans = document.getElementById("sellerTransactions")
     var role = localStorage.getItem("role");
@@ -17,7 +17,7 @@ $(document).ready(function(){
       //$('#cartItems').text(cart_items);
       var UserName = localStorage.getItem("agroAfric_user_name");
      $("#name").text(UserName)
-      let AUTH_BACKEND_URL =  'https://agro-africa.io';
+      let AUTH_BACKEND_URL =  'http://localhost:5000';
       let user_id = localStorage.getItem('user_id');
       var seller_id = localStorage.getItem("seller_id");
       $.ajax({
@@ -99,7 +99,7 @@ $(sellProds).attr("href", '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/
 
 $(sellSale).attr("href", '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/'+localStorage.getItem('user_id') + '/sales')
 
-$(sellDisp).attr("href", '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/'+localStorage.getItem('user_id') + '/dispatch')
+$(sellDisp).attr("href", '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/'+localStorage.getItem('user_id') + '/updateSeller')
 
 $(sellWare).attr("href", '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/'+localStorage.getItem('user_id') + '/warehouses')
 
@@ -180,7 +180,7 @@ $.ajax({
 
 
 setInterval(function(){
-  const AUTH_BACKEND_URL = 'https://agro-africa.io';
+  const AUTH_BACKEND_URL = 'http://localhost:5000';
     $.ajax({
       url: `${AUTH_BACKEND_URL}/agroAfrica/v1/user/${localStorage.getItem("role")}/profile/${localStorage.getItem("user_id")}/`,
       dataType: "JSON",

@@ -12,10 +12,11 @@ router.post('/saveImage', (req, res) => {
   const imgPath = path.join(__dirname, '../pages/assets/products');//__dirname + '/images/' + fileName //'
   //const serverPath = '/' + imgPath + '/'+ filePath + '.jpg'; //files[0]
   const localPath = '/' + imgPath + '/' + fileName;
+  const winPath = imgPath + '/' + fileName;
   const returnPath = '/images/products/' + fileName;
   //__dirname + '
    console.log(file);
-  file.mv(localPath, (error) => {
+  file.mv(winPath, (error) => {
     if (error) {
       console.error(error)
       res.writeHead(500, {
@@ -39,10 +40,11 @@ router.post('/saveWarehouse', (req, res) => {
   const imgPath = path.join(__dirname, '../pages/assets/warehouses');//__dirname + '/images/' + fileName //'
   //const serverPath = '/' + imgPath + '/'+ filePath + '.jpg'; //files[0]
   const localPath = '/' + imgPath + '/' + fileName;
+  const winPath = imgPath + '/' + fileName;
   const returnPath = '/images/warehouses/' + fileName;
   //__dirname + '
    console.log(file);
-  file.mv(localPath, (error) => {
+  file.mv(winPath, (error) => {
     if (error) {
       console.error(error)
       res.writeHead(500, {

@@ -29,7 +29,7 @@ var itemList = $(".quantity");
 
 
 
-let AUTH_BACKEND_URL = 'https://agro-africa.io';
+let AUTH_BACKEND_URL = 'http://localhost:5000';
 
 let logout = document.getElementById("logout")
 $(logout).click(function(){
@@ -65,7 +65,7 @@ $.ajax({
 });
 
 setInterval(function(){
-  const AUTH_BACKEND_URL = 'https://agro-africa.io';
+  const AUTH_BACKEND_URL = 'http://localhost:5000';
     $.ajax({
       url: `${AUTH_BACKEND_URL}/agroAfrica/v1/user/${localStorage.getItem("role")}/profile/${localStorage.getItem("user_id")}/`,
       dataType: "JSON",

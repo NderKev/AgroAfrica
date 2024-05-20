@@ -3,7 +3,7 @@ exports.up = function(knex) {
   return Promise.all([
       knex.schema.createTable('product_category', function (table) {
           table.increments();
-          table.enum('category',['electronics','kitchen']);
+          table.enum('category',['cereals', 'grains','flour', 'coffee', 'tea']);
           table.timestamps();
       })
   ])

@@ -1,12 +1,12 @@
 $(document).ready(function(){
 //e.preventDefault()
-let AUTH_BACKEND_URL = 'https://agro-africa.io'
-let sellProf = document.getElementById("sellerProfile")
+let AUTH_BACKEND_URL = 'http://localhost:5000'
+let sellProf = document.getElementById("seller_profile")
 let addProds = document.getElementById("addNewProducts")
 let sellProds = document.getElementById("sellerProducts")
 let sellSale = document.getElementById("sellerSales")
 let sellDisp = document.getElementById("sellerDispatch")
-let sellWare = document.getElementById("sellerWarehouses")
+let sellWare = document.getElementById("seller_settings")
 let sellTrans = document.getElementById("sellerTransactions")
 var isLoggedIn = localStorage.getItem("agroAfric_user_name");
 var role = localStorage.getItem("role");
@@ -19,7 +19,7 @@ $("#name").text(UserName);
 var seller_id = localStorage.getItem("seller_id");
 var UserName = localStorage.getItem("agroAfric_user_name");
 $("#name").text(UserName)
-let AUTH_BACKEND_URL = 'https://agro-africa.io'
+let AUTH_BACKEND_URL = 'http://localhost:5000'
 $(logout).click(function(){
 localStorage.setItem('agroAfric_user_name', "");
 localStorage.setItem('user_id',"");
@@ -52,7 +52,7 @@ $(sellSale).attr("href", '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/'
 
 $(sellDisp).attr("href", '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/'+localStorage.getItem('user_id') + '/dispatch')
 
-$(sellWare).attr("href", '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/'+localStorage.getItem('user_id') + '/warehouses')
+$(sellWare).attr("href", '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/'+localStorage.getItem('user_id') + '/updateSeller')
 
 $(sellTrans).attr("href", '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/'+localStorage.getItem('user_id') + '/transactions')
 
@@ -144,7 +144,7 @@ $(add).click(function(){
 });
 
 setInterval(function(){
-  const BACKEND_URL = 'https://agro-africa.io';
+  const BACKEND_URL = 'http://localhost:5000';
     $.ajax({
       url: `${BACKEND_URL}/agroAfrica/v1/user/${localStorage.getItem("role")}/profile/${localStorage.getItem("user_id")}/`,
       dataType: "JSON",

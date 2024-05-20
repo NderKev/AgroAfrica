@@ -12,7 +12,7 @@ exports.createOrder = async (data) => {
     quantity: data.quantity || 0,
     sub_total: data.sub_total || 0,
     new: 1,
-    status: "preparing",
+    status: "pending",
     created_at: createdAt,
     updated_at: createdAt
   });
@@ -273,9 +273,24 @@ exports.getItemFromSellerSoldCart = async (seller_id) => {
   .where('traded_items.seller_id', '=', seller_id)
   //.where('carts.stage', '=', 'ordered')
   .where('orders.new', '=', 0)
-  .where('shipment.status', '=', 'preparing');
+  .where('shipment.status', '=', 'pending');
   return query;
 };
+
+ exports.getItemSoldLocation = async (order_id) => {
+  const query = db.read.select('seller.city', 'seller.state', 'seller.country')
+  .from('seller')
+  .join('traded_items','traded_items.seller_id','=','seller.id')
+  //.join('shipment','shipment.order_id','=', order_id)
+  //.join('seller','orders.id','=','shipment.order_id')
+  .where('traded_items.order_id', '=', order_id)
+  //.where('carts.stage', '=', 'ordered')
+  //.where('orders.new', '=', 0)
+  .where('traded_items.status', '=', 'paid');
+  return query;
+}; 
+
+
 
 exports.getAllFromShipmentByUserID = async (user_id) => {
   const query = db.read.select('*')

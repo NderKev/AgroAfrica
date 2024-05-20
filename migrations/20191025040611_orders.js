@@ -6,6 +6,7 @@ exports.up = function (knex) {
       table.integer('quantity').unsigned()
       table.integer('sub_total').unsigned()
       table.tinyint('new').unsigned()
+      table.enum('status',['pending','shipped','active','delivered']);
       table.timestamps();
     })
   ])

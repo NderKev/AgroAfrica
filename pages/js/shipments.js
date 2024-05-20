@@ -1,8 +1,8 @@
 $(document).ready(function(){
     var isLoggedIn = localStorage.getItem("agroAfric_user_name");
-    let custProf = document.getElementById("customerProfile")
+    let custProf = document.getElementById("user_profile")
     let custProds = document.getElementById("customerProducts")
-    let custShips = document.getElementById("customerShipments")
+    let custShips = document.getElementById("user_settings")
     let custOrds = document.getElementById("customerOrders")
     let custPays = document.getElementById("customerPayments")
     let custTrans = document.getElementById("customerTransactions")
@@ -18,7 +18,7 @@ $(document).ready(function(){
       //$('#cartItems').text(cart_items);
       var UserName = localStorage.getItem("agroAfric_user_name");
      $("#name").text(UserName)
-      let AUTH_BACKEND_URL = 'https://agro-africa.io';
+      let AUTH_BACKEND_URL = 'http://localhost:5000';
       let user_id = localStorage.getItem("user_id");
       $.ajax({
             url: `${AUTH_BACKEND_URL}/agroAfrica/v1/order/shipment/${user_id}`,
@@ -102,7 +102,7 @@ $(custProf).attr("href", '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/p
 
 $(custProds).attr("href", '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/'+localStorage.getItem('user_id') + '/products')
 
-$(custShips).attr("href", '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/'+localStorage.getItem('user_id') + '/shipments')
+$(custShips).attr("href", '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/profile/'+localStorage.getItem('user_id') + '/update')
 
 $(custOrds).attr("href", '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/'+localStorage.getItem('user_id') + '/orders')
 
@@ -155,7 +155,7 @@ setInterval(function(){
 }, 1000);
 
 setInterval(function(){
-  const BACKEND_URL = 'https://agro-africa.io';
+  const BACKEND_URL = 'http://localhost:5000';
     $.ajax({
       url: `${BACKEND_URL}/agroAfrica/v1/user/${localStorage.getItem("role")}/profile/${localStorage.getItem("user_id")}/`,
       dataType: "JSON",

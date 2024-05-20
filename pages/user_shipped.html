@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" href="/images/favicon.ico">
-        <title>Orders | agro-africa</title>
+        <title> User Tracking | agro-africa</title>
         <meta name="description" content="Agricultural produce directly from farmers">
 
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
@@ -80,12 +80,6 @@
                     C4.5,7.8,4.2,7.8,4,8S3.8,8.5,4,8.7L7.1,11.9z"/>
                 <circle class="ad0" cx="7.5" cy="7.5" r="7"/>
             </symbol>
-
-            <symbol id="remove" viewBox="0 0 24 24">
-                <title>Remove</title>
-                <path d="M0 0h24v24H0z" fill="none"/>
-                <path d="M7 11v2h10v-2H7zm5-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-            </symbol>
         </svg>
 
         <!-- Navigation -->
@@ -104,14 +98,13 @@
                             <path d="M0 0h24v24H0z" fill="none"/>
                         </svg>
                     </a></li>
-                    <!-- "'/agro-africa/v1/user/'+ ${localStorage.getItem('role')} + '/profile/' + ${localStorage.getItem('user_id')} + '/shipments'" -->
-                    <!-- <li class="item"><a id="customerProfile" href="/profile.html">Profile</a></li> -->
+                   <!-- <li class="item"><a id="customerProfile" href="/profile.html">Profile</a></li> -->
                     <li class="item"><a id="customerProducts" href="/user_products.html">Products</a></li>
                     <li class="item"><a id="customerShipments" href="/shipments.html">Shipments</a></li>
-                    <!-- <li class="item current"><a id="customerOrders" href="/orders.html">Orders</a></li> -->
+                    <li class="item"><a id="customerOrders" href="/orders.html">Orders</a></li>
                     <li class="item"><a id="customerPayments" href="/user_payments.html">Payments</a></li>
                     <li class="item"><a id="customerTransactions" href="/user_transactions.html">Transactions</a></li>
-                    <li class="item"><a id="customerTracking" href="/user_tracking.html">Tracking</a></li>
+                    <!-- <li class="item current"><a id="customerTracking" href="/user_tracking.html">Tracking</a></li> -->
                     <li class="item"><a href="#" aria-label="search"><svg class="search"><use xlink:href="#search"/></svg></a></li>
                     <li class="item"><a id="customerCart" href="/user_cart.html" aria-label="cart"><svg class="cart"><use xlink:href="#cart"/></svg><span id="cartItems"> </span></a></li>
                     <li class="item dropdown">
@@ -121,7 +114,7 @@
                         <div class="sub-nav">
                             <hr class="seperator">
                             <div class="sub-item">
-                                <a href="#" id="name">Username</a>
+                                <a href="#"id="name">Username</a>
                             </div>
                             <div class="sub-item">
                                 <a href="#" id="user_profile">View profile</a>
@@ -144,18 +137,20 @@
                 <nav class="breadcrumb" aria-label="breadcrumb">
                     <ul>
                         <li><a href="" aria-hidden="true"><svg class="arrow-left"><use xlink:href="#arrow-left"/></svg></a></li>
-                        <li><a href="">Orders</a></li>
+                        <li><a href="">Track your merchandise</a></li>
                     </ul>
                 </nav>
-
                 <div class="table-responsive">
-                    <table class="cart" id="table_orders">
+                    <table class="cart" id="table_shipped">
                       <thead>
                         <tr>
-                            <th>Order ID</th>
-                            <th>Ordered Date</th>
-                            <th>Aggregate Quantity</th>
-                            <th>Total Price</th>
+                            <!-- <th>Order</th> -->
+                            <th>Tracking Number</th>
+                            <th>Shipment Date</th>
+                            <th>Carrier Company</th>
+                            <th>Carrier Number</th>
+                            <th>Source</th>
+                            <th>Destination </th>
                             <th>Status</th>
                         </tr>
                       </thead>
@@ -215,8 +210,55 @@
                         </tr> -->
                     </tbody>
                     </table>
-                    <div><p><span style="color:red" id="placement_error_log"></span></p></div>
+                    <p><span style="color:red" id="placement_error_log"></span></p>
                 </div>
+               <!-- <div class="tracking">
+                    <div class="sidebar">
+                        <div class="sidebar-title">
+                            <h2>Tracking</h2>
+                        </div>
+                        <div class="sidebar-detail">
+                            <div>
+                                <p><strong>DEPARTURE:</strong></p>
+                                <div>
+                                    <p>Thursday, 12.45am</p>
+                                    <p class="small-text">Katonga Warehouse</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div>
+                                <p><strong>ETA:</strong></p>
+                                <div>
+                                    <p>Friday, 16:45am</p>
+                                    <p class="small-text">Rulinda AS Warehosue</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div>
+                                <p><strong>DISTANCE COVERED:</strong></p>
+                                <div>
+                                    <p>235km / 645km</p>
+                                    <p class="small-text">410km to left</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div>
+                                <p><strong>EXPECTED STOPS:</strong></p>
+                                <div>
+                                    <p>3 Stops</p>
+                                    <p class="small-text">Kakamega Weigh Bridge</p>
+                                    <p class="small-text">Lukaya Weigh Bridge</p>
+                                    <p class="small-text">Mabira Forest</p>
+                                </div>
+                            </div>
+                            <a class="btn btn-red" href="">Optimize route</a>
+                        </div>
+                    </div>
+
+                    <div class="map">
+                        <iframe title="Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25363.16345971304!2d-122.17531595933339!3d37.38047969204259!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb106a6150205%3A0x2ad324a5329651a6!2sLos%20Altos%20Hills%2C%20CA%2C%20USA!5e0!3m2!1sen!2snz!4v1585697861404!5m2!1sen!2snz" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    </div>
+                </div> -->
             </div>
         </section>
 
@@ -263,6 +305,7 @@
         <script src="/scripts/navigation.js"></script>
         <script src="/scripts/tabs.js"></script>
         <script src="/scripts/product.js"></script>
-        <script src="/scripts/orders.js"></script>
+        <script src="/scripts/user_shipped.js"></script>
+
     </body>
 </html>

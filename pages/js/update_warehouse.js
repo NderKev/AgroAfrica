@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    let AUTH_BACKEND_URL = 'https://agro-africa.io'
+    let AUTH_BACKEND_URL = 'http://localhost:5000'
     let logout = document.getElementById("logout")
   //  e.preventDefault()
     var role = localStorage.getItem("role");
@@ -169,13 +169,13 @@ $(document).ready(function(){
   handleImageUpload(event)
  })
 
-      //window.location.href = 'complete_profile.html?id='+localStorage.getItem("user_id");///https://agro-africa.io//agroAfrica/v1/user/profile/" + //localStorage.getItem('user_id') + "complete_profile.html";
+      //window.location.href = 'complete_profile.html?id='+localStorage.getItem("user_id");///http://localhost:5000//agroAfrica/v1/user/profile/" + //localStorage.getItem('user_id') + "complete_profile.html";
     }
   })
 
 
   setInterval(function(){
-    const BACKEND_URL = 'https://agro-africa.io';
+    const BACKEND_URL = 'http://localhost:5000';
       $.ajax({
         url: `${BACKEND_URL}/agroAfrica/v1/user/${localStorage.getItem("role")}/profile/${localStorage.getItem("user_id")}/`,
         dataType: "JSON",

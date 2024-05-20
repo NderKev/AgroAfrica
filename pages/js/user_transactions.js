@@ -1,12 +1,12 @@
 $(document).ready(function(){
 //e.preventDefault()
-let AUTH_BACKEND_URL = 'https://agro-africa.io'
-let custProf = document.getElementById("customerProfile")
+let AUTH_BACKEND_URL = 'http://localhost:5000'
+let custProf = document.getElementById("user_profile")
 let custProds = document.getElementById("customerProducts")
 let custShips = document.getElementById("customerShipments")
 let custOrds = document.getElementById("customerOrders")
 let custPays = document.getElementById("customerPayments")
-let custTrans = document.getElementById("customerTransactions")
+let custTrans = document.getElementById("user_settings")
 let custTracks = document.getElementById("customerTracking")
 let custCart = document.getElementById("customerCart")
 
@@ -18,7 +18,7 @@ window.location.href = "/";
 else{
 var UserName = localStorage.getItem("agroAfric_user_name");
 $("#name").text(UserName)
-//  window.location.href = 'kidney_beans.html?id='+localStorage.getItem("user_id");///https://agro-africa.io//agroAfrica/v1/user/profile/" + //localStorage.getItem('user_id') + "complete_profile.html";
+//  window.location.href = 'kidney_beans.html?id='+localStorage.getItem("user_id");///http://localhost:5000//agroAfrica/v1/user/profile/" + //localStorage.getItem('user_id') + "complete_profile.html";
 //window.location.href = '/profile/'+localStorage.getItem('user_id') +'/' + 'kidney_beans.html'; fetchTxByUser/${user_id}
 let user_id = localStorage.getItem("user_id");
   $.ajax({
@@ -60,7 +60,7 @@ let user_id = localStorage.getItem("user_id");
 
   $(custPays).attr("href", '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/'+localStorage.getItem('user_id') + '/payments')
 
-  $(custTrans).attr("href", '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/'+localStorage.getItem('user_id') + '/transactions')
+  $(custTrans).attr("href", '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/profile/'+localStorage.getItem('user_id') + '/update')
 
   $(custTracks).attr("href", '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/'+localStorage.getItem('user_id') + '/tracking')
 
@@ -98,7 +98,7 @@ $.ajax({
 
 
 setInterval(function(){
-  const BACKEND_URL = 'https://agro-africa.io';
+  const BACKEND_URL = 'http://localhost:5000';
     $.ajax({
       url: `${BACKEND_URL}/agroAfrica/v1/user/${localStorage.getItem("role")}/profile/${localStorage.getItem("user_id")}/`,
       dataType: "JSON",

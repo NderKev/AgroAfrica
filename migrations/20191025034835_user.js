@@ -18,6 +18,7 @@ exports.up = function (knex) {
       table.string('picture');
       table.string('latitude',200).collate('utf8mb4_unicode_ci');
       table.string('longitude',200).collate('utf8mb4_unicode_ci');
+      table.tinyint('flag').unsigned();
       table.timestamps();
     })
   ])

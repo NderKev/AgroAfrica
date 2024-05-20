@@ -174,5 +174,10 @@ router.get('/tradedItem/:seller_id', authenticator, allowSeller,  async (req, re
   return res.status(response.status).send(response)
 })
 
+router.get('/shipment/dest/:order_id', authenticator, allowSeller,  async (req, res, next) => {
+  req.body.order_id = Number(req.params.order_id);
+  const response = await ordersController.fetchShipmentDestination(req.body.order_id);
+  return res.status(response.status).send(response)
+})
 
 module.exports = router;

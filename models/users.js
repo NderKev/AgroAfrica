@@ -53,6 +53,7 @@ exports.createUser = async (data) => {
     picture: data.picture || null,
     latitude: data.latitude || null,
     longitude: data.longitude || null,
+    flag:1,
     created_at: createdAt,
     updated_at: createdAt
   });
@@ -198,6 +199,7 @@ exports.createSeller = async (data) => {
     logo: data.logo || null,
     latitude : data.latitude,
     longitude : data.logitude,
+    flag : 1,
     created_at: createdAt,
     updated_at: createdAt
   });
@@ -433,7 +435,7 @@ exports.genToken = async (reqData) => {
   const userExists = await userModel.getUserDetailsByEmail(validInput.user_name);
   var token = {};
   if (userExists && userExists.length) {
-    var tkn = await userModel.genAuthToken(userExists[0].email, userExists[0].password);
+    var tkn = await userModel.genAuthToken(userExists[0].email, userExists[0].id);
     await sleep(1000);
    if (tkn){
      var tkExp = await getExpDate(tkn.token);
@@ -441,6 +443,7 @@ exports.genToken = async (reqData) => {
      console.log(tkExp);
      token.expiry = tkExp.data.exp;
      token.token = tkn.token;
+     token.user_id = userExists[0].id;
       console.log(token);
    }
 // }
@@ -468,7 +471,7 @@ exports.updateToken = async (reqData) => {
   if (currentToken && currentToken.length){
     console.log(currentToken);
   if(currentToken[0].expiry <= timeNow){
-    var newToken = await userModel.genAuthToken(userExists[0].email, userExists[0].password);
+    var newToken = await userModel.genAuthToken(userExists[0].email, userExists[0].id);
      await sleep(1000);
      if (newToken){
        var tkExp = await getExpDate(newToken.token);
@@ -495,7 +498,7 @@ exports.updateToken = async (reqData) => {
    }
     }
   else{
-    var initToken = await userModel.genAuthToken(userExists[0].email, userExists[0].password);
+    var initToken = await userModel.genAuthToken(userExists[0].email, userExists[0].id);
      await sleep(1000);
      if (initToken){
        var tkInitExp = await getExpDate(initToken.token);
@@ -515,6 +518,79 @@ exports.updateToken = async (reqData) => {
 }
 }
 }
+
+exports.updateVerToken = async (reqData) => {
+  const userExists = await userModel.getUserDetailsByEmail(reqData);
+  if (userExists && userExists.length){
+  var token = {};
+  var input = {};
+  input.user_id = userExists[0].id;
+  var currentToken = await userModel.getUserTokenByUserId(userExists[0].id);
+  var timeNow = Math.floor(Date.now() / 1000);
+  if (currentToken.length > 0){
+   console.log(currentToken);
+  let _expiry = currentToken[0].expiration;
+  let _token = currentToken[0].token;
+  let checkId = await userModel.verifyGenToken(_token);
+  let _checkId = checkId.password;
+  let _id = userExists[0].id;
+  //console.log(_checkId, _id, _expiry, _token);
+  let isNum = isNaN(_checkId);
+  if(_expiry <= timeNow || _checkId != _id){
+    var newToken = await userModel.genAuthToken(userExists[0].email, userExists[0].id);
+     await sleep(1000);
+     if (newToken){
+       var tkExp = await getExpDate(newToken.token);
+       await sleep(1000);
+       //console.log(tkExp);
+       token.user_id = userExists[0].id;
+       token.expiration = tkExp.data.exp;
+       token.token = newToken.token;
+       //token.message = 'updated';
+       input.user_id = userExists[0].id;
+       input.token = newToken.token;
+       input.expiration = tkExp.data.exp;
+       const response = await userModel.updateUserToken(input);
+       if (response && response.length){
+         token.message = 'updated';
+       }
+     }
+     return token;
+   }
+
+   else  {
+     token.user_id = userExists[0].id;
+     token.message = 'valid';
+     token.expiration = currentToken[0].expiration;
+     token.token = currentToken[0].token;
+      //console.log(token);
+     return token;
+   }
+    }
+ else {
+    var initToken = await userModel.genAuthToken(userExists[0].email, userExists[0].id);
+     await sleep(1000);
+     if (initToken){
+       var tkInitExp =  getExpDate(initToken.token);
+       await sleep(1000);
+       //console.log(tkExp);
+       token.user_id = userExists[0].id;
+       token.expiration = tkInitExp.data.exp;
+       token.token = initToken.token;
+       //token.message = 'updated';
+       input.user_id = userExists[0].id;
+       input.token = initToken.token;
+       input.expiration = tkInitExp.data.exp;
+       const response = await userModel.createUserToken(input);
+       if (response && response.length){
+         token.message = 'created';
+       }
+       return token;
+  }
+}
+}
+}
+
 
 exports.genVerToken = async (reqData) => {
   const validInput = validateDetails.validateEmailAuth(reqData);
@@ -539,7 +615,7 @@ return token;
 }
 }
 
-exports.verifyToken = async (token) => {
+exports.verifyToken = async (token, id) => {
   try{
    var valid = false;
    var resp = {};
@@ -556,6 +632,7 @@ exports.verifyToken = async (token) => {
     console.log(data);
     var expiry = data.exp;//getExpDate(token);
     //await sleep(1000);
+    
     var timeNow = Math.floor(Date.now() / 1000);
     if (expiry <= timeNow){
       valid = true;
@@ -578,6 +655,65 @@ return resp;
 catch(err){
   resp.token = token;
   resp.valid = valid;
+  resp.message = "error";
+  return resp;
+}
+}
+
+
+exports.verifyGenToken = async (token) => {
+  try{
+   var valid = false;
+   var resp = {};
+  jwt.verify(token, process.env.SECRET_TOKEN, (err, decoded) => {
+    if(err) {
+       resp.token = token;
+       resp.expiry = 0;
+       resp.valid = valid;
+       resp.phone = token;
+       resp.password = token;
+       resp.message = "error";
+       return resp;
+    }
+    else{
+    //tokenVer.
+    var data = decoded;
+    console.log(data);
+    var expiration = data.exp;//getExpDate(token);
+    //await sleep(1000);
+    let _phone = data.data.phone;
+    let _password = data.data.password;
+    var timeNow = Math.floor(Date.now() / 1000);
+    if (expiration <= timeNow){
+      valid = true;
+      resp.token = token;
+      resp.expiry = expiration;
+      resp.valid = valid;
+      resp.phone = _phone;
+      resp.password = _password;
+      resp.message = "expired";
+    }
+    else {
+      valid = true;
+      resp.token = token;
+      resp.expiry = expiration;
+      resp.valid = valid;
+      resp.phone = _phone;
+      resp.password = _password;
+      resp.message = "valid";
+    }
+
+  }
+})
+return resp;
+//console.log(tokenVer);
+}
+catch(err){
+  resp.token = token;
+  resp.expiry = 0;
+  resp.valid = valid;
+  resp.phone = token;
+  resp.password = token;
   resp.message = "error";
   return resp;
 }

@@ -100,11 +100,11 @@
                     </a></li>
                     <li class="item"><a href="/index.html">Home</a></li>
                     <li class="item"><a href="/products.html">Products</a></li>
-                    <li class="item current"><a href="/payments.html">Payments</a></li>
+                   <!-- <li class="item current"><a href="/payments.html">Payments</a></li> -->
                     <li class="item"><a href="/tracking.html">Tracking</a></li>
                     <li class="item"><a href="#" aria-label="search"><svg class="search"><use xlink:href="#search"/></svg></a></li>
-                    <li class="item"><a href="/cart.html" aria-label="cart"><svg class="cart"><use xlink:href="#cart"/></svg><span id="cartItems"> </span></a></li>
-                    <!-- <li class="item dropdown">
+                     <!-- <li class="item"><a href="/cart.html" aria-label="cart"><svg class="cart"><use xlink:href="#cart"/></svg><span id="cartItems"> </span></a></li>
+                     <li class="item dropdown">
                         <a href="#" aria-label="account">
                             <svg class="account"><use xlink:href="#account"/></svg>
                         </a>
@@ -139,7 +139,7 @@
                 </nav>
 
                 <div class="payments">
-                    <div class="column">
+                    <!-- <div class="column">
                         <h2>Payment Summary</h2>
                         <table id="table_payments" style="width:100%">
                           <thead>
@@ -181,7 +181,7 @@
                             <p>Date:<br><strong> <span id="orderDate"> </span></strong></p>
                             <p>Total:<br><strong><span id="orderTotal"> </span></strong></p>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="column double">
                         <p class="text-green">PAYMENT OPTIONS:</p>
@@ -201,10 +201,11 @@
                             <input class="state" type="radio" title="tab-three" name="tabs-state" id="tab-three" />
 
                             <div class="tabs">
-                                <label for="tab-one" id="tab-one-label" class="tab tab-one active">Bitcoin</label>
-                                <div id="tab-one-panel" class="panel active">
+                                <label for="tab-one" id="tab-one-label" class="tab">Bitcoin</label>
+                                <div id="tab-one-panel" class="panel">
                                     <div class="bitcoin">
-                                        <img class="qr-code" src="/images/qr code.svg" alt="qr code">
+                                         <img class="qr-code" src="/images/icons/bitcoin.svg" alt="payment"> 
+                                       <!-- <img src="/images/icons/bitcoin.svg" alt="payment">
                                         <form class="form">
                                             <div class="form-group">
                                                 <label for="address">Recipient Address</label>
@@ -221,15 +222,16 @@
                                                 </div>
                                                 <input class="btn btn-blue" type="submit" id="btnPay" value="Send">
                                             </div>
-                                        </form>
+                                        </form> -->
                                     </div>
                                 </div>
 
                                 <label for="tab-two" id="tab-two-label" class="tab">Ethereum</label>
                                 <div id="tab-two-panel" class="panel">
                                   <div class="bitcoin">
-                                      <img class="qr-code" src="/images/qr code.svg" alt="qr code">
-                                      <form class="form">
+                                    <img class="qr-code" src="/images/icons/ethereum.svg" alt="payment">
+                                     <!-- <img class="qr-code" src="/images/qr code.svg" alt="qr code">
+                                       <form class="form">
                                           <div class="form-group">
                                               <label for="eth_address">Recipient Address</label>
                                               <input type="text" id="eth_address" name="eth_address">
@@ -245,15 +247,16 @@
                                               </div>
                                               <input class="btn btn-blue" type="submit" id="btnPay"  value="Pay">
                                           </div>
-                                      </form>
+                                      </form> -->
                                   </div>
                                 </div>
 
                                 <label for="tab-three" id="tab-three-label" class="tab">agro-africa Tokens</label>
                                 <div id="tab-three-panel" class="panel">
                                   <div class="bitcoin">
-                                      <img class="qr-code" src="/images/qr code.svg" alt="qr code">
-                                      <form class="form">
+                                    <img class="qr-code" src="/images/logo.svg" alt="payment">
+                                     <!-- <img class="qr-code" src="/images/qr code.svg" alt="qr code">
+                                       <form class="form">
                                           <div class="form-group">
                                               <label for="aga_address">Recipient Address</label>
                                               <input type="text" id="aga_address" name="aga_address">
@@ -270,7 +273,7 @@
                                               <input class="btn btn-blue" type="submit"  id="btnPay" value="Send">
                                           </div>
                                           <div>  <p><span style="color:red" id="placement_error_log"></span></p> </div>
-                                      </form>
+                                      </form> -->
                                   </div>
                                 </div>
                             </div>

@@ -9,7 +9,7 @@ $(document).ready(function(){
     else{
       var UserName = localStorage.getItem("agroAfric_user_name");
       $("#name").text(UserName)
-      //window.location.href = 'complete_profile.html?id='+localStorage.getItem("user_id");///https://agro-africa.io//agroAfrica/v1/user/profile/" + //localStorage.getItem('user_id') + "complete_profile.html";
+      //window.location.href = 'complete_profile.html?id='+localStorage.getItem("user_id");///http://localhost:5000//agroAfrica/v1/user/profile/" + //localStorage.getItem('user_id') + "complete_profile.html";
     }
   })
 }) **/
@@ -31,7 +31,7 @@ if (typeof isLoggedIn === 'undefined' || isLoggedIn === null || !isLoggedIn || r
   window.location.href = "/admin.html";
 }
 else{
-var AUTH_BACKEND_URL = 'https://agro-africa.io'
+var AUTH_BACKEND_URL = 'http://localhost:5000'
 var UserName = localStorage.getItem("agroAfric_user_name");
 $("#name").text(UserName)
 var UserName = localStorage.getItem("agroAfric_user_name");
@@ -66,7 +66,7 @@ $(redAdmOrd).attr("href", '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/
 
 $(redAdmShips).attr("href", '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/'+localStorage.getItem('user_id') + '/shipments')
 
-/** var BACKEND_URL = 'https://agro-africa.io';
+/** var BACKEND_URL = 'http://localhost:5000';
  function getSession(){
    var expires = null;
    $.ajax({
@@ -189,7 +189,7 @@ function refresh(){
 
 
         $(document).ready(function(){
-          const AUTH_BACKEND_URL = 'https://agro-africa.io';
+          const AUTH_BACKEND_URL = 'http://localhost:5000';
           let profile = "profile";
             $.ajax({
               url: `${BACKEND_URL}/agroAfrica/v1/user/${localStorage.getItem("role")}/${profile}/${localStorage.getItem("user_id")}/`,

@@ -44,7 +44,7 @@ const sendVerification = async (reqData) => {
         pass: process.env.EMAIL_USER_PASSWORD, // generated ethereal password
       },
     });
-    const AUTH_URL = `https://agro-africa.io/agroAfrica/v1/user/verify`;
+    const AUTH_URL = `http://localhost:5000/agroAfrica/v1/user/verify`;
     const link = `${AUTH_URL}/${email}/${token}`;
     console.log(link);
     // send mail with defined transport object
