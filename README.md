@@ -1,4 +1,4 @@
-# AgroiAfrica System using NodeJS and MySQL
+# AgroAfrica System using NodeJS and MySQL
 
 ## Configuration
 
