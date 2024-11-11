@@ -12,7 +12,7 @@ import "./ExternalStorage.sol";
 
 library ProductsLibrary {
  //    1. Product ID   2. Product Name   3. Product Description 4. product Location 5. Product Price
- //    6. Product Producer  7. Product Grade 8. Product Quality 9. Product Image ; product quantity
+ //    6. Product Producer  7. Product Grade 8. Product Quality 9. Product Image 10. Product quantity
   function getProductCount(
     address _storageContract
     ) public constant returns(uint)
