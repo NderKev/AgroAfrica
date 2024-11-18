@@ -58,17 +58,20 @@ $.each(results.data, function (i, item) {
     //$('#user_product_cards').append(trHTML);
     let currCart = getCategory(item.id);
     if (currCart === 1){
-      $('#user_product_cards').append(trHTML);
-    }
-  else if (currCart === 4){
-    $('#user_product_cards_coffee').append(trHTML);
-  }
-  else if (currCart === 3){
-    $('#user_product_cards_flour').append(trHTML);
-  }
-  else {
-    $('#user_product_cards_grains').append(trHTML);
-  }
+      $('#seller_product_cards_coffee').append(trHTML);
+      
+     }
+     else if (currCart === 4){
+      $('#seller_product_cards').append(trHTML);
+     
+     }
+     else if (currCart === 3){
+      $('#seller_product_cards_grains').append(trHTML);
+      
+     }
+     else {
+      $('#seller_product_cards_flour').append(trHTML);
+     }
 
 });
 
