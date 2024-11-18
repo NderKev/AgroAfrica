@@ -1,6 +1,6 @@
 $(document).ready(function(){
 //e.preventDefault()
-let AUTH_BACKEND_URL = 'http://85.210.0.161'
+let AUTH_BACKEND_URL = 'http://agroafrica.uksouth.cloudapp.azure.com'
 let custProf = document.getElementById("user_profile")
 let custProds = document.getElementById("user_settings")
 let custShips = document.getElementById("customerShipments")
@@ -18,7 +18,7 @@ window.location.href = "/";
 else{
 var UserName = localStorage.getItem("agroAfric_user_name");
 $("#name").text(UserName)
-//  window.location.href = 'kidney_beans.html?id='+localStorage.getItem("user_id");///http://85.210.0.161//agroAfrica/v1/user/profile/" + //localStorage.getItem('user_id') + "complete_profile.html";
+//  window.location.href = 'kidney_beans.html?id='+localStorage.getItem("user_id");///http://agroafrica.uksouth.cloudapp.azure.com//agroAfrica/v1/user/profile/" + //localStorage.getItem('user_id') + "complete_profile.html";
 //window.location.href = '/profile/'+localStorage.getItem('user_id') +'/' + 'kidney_beans.html';
 $.ajax({
 url: `${AUTH_BACKEND_URL}/agroAfrica/v1/product/fetchAll`,
@@ -166,7 +166,7 @@ setInterval(function(){
 }, 1000);
 
 setInterval(function(){
-  const BACKEND_URL = 'http://85.210.0.161';
+  const BACKEND_URL = 'http://agroafrica.uksouth.cloudapp.azure.com';
     $.ajax({
       url: `${BACKEND_URL}/agroAfrica/v1/user/${localStorage.getItem("role")}/profile/${localStorage.getItem("user_id")}/`,
       dataType: "JSON",

@@ -1,6 +1,6 @@
 $(document).ready(function(){
 //e.preventDefault()
-let AUTH_BACKEND_URL = 'http://85.210.0.161'
+let AUTH_BACKEND_URL = 'http://agroafrica.uksouth.cloudapp.azure.com'
 let sellProf = document.getElementById("seller_profile")
 let addProds = document.getElementById("addNewProducts")
 let sellProds = document.getElementById("sellerProducts")
@@ -19,7 +19,7 @@ $("#name").text(UserName);
 var seller_id = localStorage.getItem("seller_id");
 var UserName = localStorage.getItem("agroAfric_user_name");
 $("#name").text(UserName)
-let AUTH_BACKEND_URL = 'http://85.210.0.161'
+let AUTH_BACKEND_URL = 'http://agroafrica.uksouth.cloudapp.azure.com'
 $(logout).click(function(){
 localStorage.setItem('agroAfric_user_name', "");
 localStorage.setItem('user_id',"");
@@ -144,7 +144,7 @@ $(add).click(function(){
 });
 
 setInterval(function(){
-  const BACKEND_URL = 'http://85.210.0.161';
+  const BACKEND_URL = 'http://agroafrica.uksouth.cloudapp.azure.com';
     $.ajax({
       url: `${BACKEND_URL}/agroAfrica/v1/user/${localStorage.getItem("role")}/profile/${localStorage.getItem("user_id")}/`,
       dataType: "JSON",

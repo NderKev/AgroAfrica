@@ -29,7 +29,7 @@ var itemList = $(".quantity");
 
 
 
-let AUTH_BACKEND_URL = 'http://85.210.0.161';
+let AUTH_BACKEND_URL = 'http://agroafrica.uksouth.cloudapp.azure.com';
 
 let logout = document.getElementById("logout")
 $(logout).click(function(){
@@ -65,7 +65,7 @@ $.ajax({
 });
 
 setInterval(function(){
-  const AUTH_BACKEND_URL = 'http://85.210.0.161';
+  const AUTH_BACKEND_URL = 'http://agroafrica.uksouth.cloudapp.azure.com';
     $.ajax({
       url: `${AUTH_BACKEND_URL}/agroAfrica/v1/user/${localStorage.getItem("role")}/profile/${localStorage.getItem("user_id")}/`,
       dataType: "JSON",

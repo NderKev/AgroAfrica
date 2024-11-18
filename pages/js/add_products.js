@@ -20,7 +20,7 @@ $(document).ready(function(){
     else{
       var UserName = localStorage.getItem("agroAfric_user_name");
       $("#name").text(UserName)
-      let AUTH_BACKEND_URL = 'http://85.210.0.161'
+      let AUTH_BACKEND_URL = 'http://agroafrica.uksouth.cloudapp.azure.com'
       $(logout).click(function(){
       localStorage.setItem('agroAfric_user_name', "");
       localStorage.setItem('user_id',"");
@@ -234,7 +234,7 @@ document.querySelector('#fileUpload').addEventListener('change', event => {
                   }
           })
         })
-      //window.location.href = 'complete_profile.html?id='+localStorage.getItem("user_id");///http://85.210.0.161//agroAfrica/v1/user/profile/" + //localStorage.getItem('user_id') + "complete_profile.html";
+      //window.location.href = 'complete_profile.html?id='+localStorage.getItem("user_id");///http://agroafrica.uksouth.cloudapp.azure.com//agroAfrica/v1/user/profile/" + //localStorage.getItem('user_id') + "complete_profile.html";
     }
     /** function getCookie(ckname){
       var name = ckname + "=";
@@ -271,7 +271,7 @@ document.querySelector('#fileUpload').addEventListener('change', event => {
   })
 
   setInterval(function(){
-    const AUTH_BACKEND_URL = 'http://85.210.0.161';
+    const AUTH_BACKEND_URL = 'http://agroafrica.uksouth.cloudapp.azure.com';
       $.ajax({
         url: `${AUTH_BACKEND_URL}/agroAfrica/v1/user/${localStorage.getItem("role")}/profile/${localStorage.getItem("user_id")}/`,
         dataType: "JSON",
