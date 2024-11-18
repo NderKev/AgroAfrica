@@ -56,7 +56,7 @@ $.each(results.data, function (i, item) {
     
    }
    else {
-    $('#seller_product_cards_flour').append(trHTML);
+    $('#seller_product_cards_tea').append(trHTML);
    }
   //  $('#seller_product_cards').append(trHTML);
 

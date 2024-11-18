@@ -58,19 +58,19 @@ $.each(results.data, function (i, item) {
     //$('#user_product_cards').append(trHTML);
     let currCart = getCategory(item.id);
     if (currCart === 1){
-      $('#seller_product_cards_coffee').append(trHTML);
+      $('#user_product_cards_coffee').append(trHTML);
       
      }
      else if (currCart === 4){
-      $('#seller_product_cards').append(trHTML);
+      $('#user_product_cards').append(trHTML);
      
      }
      else if (currCart === 3){
-      $('#seller_product_cards_grains').append(trHTML);
+      $('#user_product_cards_grains').append(trHTML);
       
      }
      else {
-      $('#seller_product_cards_flour').append(trHTML);
+      $('#user_product_cards_tea').append(trHTML);
      }
 
 });

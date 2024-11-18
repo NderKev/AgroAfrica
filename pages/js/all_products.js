@@ -24,19 +24,19 @@ $.each(results.data, function (i, item) {
     trHTML = '<div class="card" id="card_' + item.id + '" value="' + item.id + '"><div class="thumbnail"><img src="' + item.picture + '" alt="product"></div><div class="content" ><a id="click_' + item.id + '"href="#">' + item.name + '</a><a id="navTag_' + item.id +'" href="#" aria-hidden="true"><svg class="arrow-right" id="arrow" aria-hidden="true"><use xlink:href="#arrow-right"/></svg></a></div></div>'
     //</div>' + item.timestamp + '</th><td>' + item.transaction_id + '</td><td>' + item.amount + '</td><td>' + item.from + '</td><td>' + item.payment_mode + '</td><td>' + "success" +  '</td></tr>';
     if (currCart === 1){
-      $('#seller_product_cards_coffee').append(trHTML);
+      $('#product_cards_coffee').append(trHTML);
       
      }
      else if (currCart === 4){
-      $('#seller_product_cards').append(trHTML);
+      $('#product_cards').append(trHTML);
      
      }
      else if (currCart === 3){
-      $('#seller_product_cards_grains').append(trHTML);
+      $('#product_cards_grains').append(trHTML);
       
      }
      else {
-      $('#seller_product_cards_flour').append(trHTML);
+      $('#product_cards_tea').append(trHTML);
      }
 
 });
