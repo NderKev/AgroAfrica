@@ -7,7 +7,7 @@
               $("#newPassword").val('')
               $("#confirmPassword").val('')
             }
-              let AUTH_BACKEND_URL = 'http://localhost:5000';
+              let AUTH_BACKEND_URL = 'http://85.210.0.161';
               let email = document.getElementById('username').value
               let password = document.getElementById('newPassword').value
 

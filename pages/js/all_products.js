@@ -1,7 +1,7 @@
 $(document).ready(function(){
 //e.preventDefault(
-let AUTH_BACKEND_URL = 'http://localhost:5000'
-//  window.location.href = 'kidney_beans.html?id='+localStorage.getItem('user_id');///http://localhost:5000/agroAfrica/v1/user/profile/" + //localStorage.getItem('user_id') + "complete_profile.html";
+let AUTH_BACKEND_URL = 'http://85.210.0.161'
+//  window.location.href = 'kidney_beans.html?id='+localStorage.getItem('user_id');///http://85.210.0.161/agroAfrica/v1/user/profile/" + //localStorage.getItem('user_id') + "complete_profile.html";
 //window.location.href = '/profile/'+localStorage.getItem('user_id') +'/' + 'kidney_beans.html';
 $.ajax({
 url: `${AUTH_BACKEND_URL}/agroAfrica/v1/product/fetchAll`,

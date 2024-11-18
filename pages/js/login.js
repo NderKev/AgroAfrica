@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  let AUTH_BACKEND_URL = 'http://localhost:5000';
+  let AUTH_BACKEND_URL = 'http://85.210.0.161';
   function refresh(){
     $("#fname").val('')
     $("#lname").val('')
@@ -14,7 +14,7 @@ $(document).ready(function(){
   if (isLoggedIn){
   var UserName = localStorage.getItem("agroAfric_user_name");
   $("#name").text(UserName)
-  //  window.location.href = 'kidney_beans.html?id='+localStorage.getItem('user_id');///http://localhost:5000//agroAfrica/v1/user/profile/" + //localStorage.getItem('user_id') + "complete_profile.html";
+  //  window.location.href = 'kidney_beans.html?id='+localStorage.getItem('user_id');///http://85.210.0.161//agroAfrica/v1/user/profile/" + //localStorage.getItem('user_id') + "complete_profile.html";
       window.location.href = '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/profile/'+localStorage.getItem('user_id') + '/';
   }
   })
@@ -192,7 +192,7 @@ function registerSeller(data){
     })
   }
 
-  /** var BACKEND_URL = 'http://localhost:5000';
+  /** var BACKEND_URL = 'http://85.210.0.161';
    function getSession(){
      var expires = null;
      $.ajax({
@@ -298,7 +298,7 @@ function registerSeller(data){
           //alert(refreshJWT);
           refreshLogin();
           //var usertype =
-          //window.location.href = "complete_profile.html" //"http://localhost:5000/agroAfrica/v1/user/profile/:id/complete_profile.html";
+          //window.location.href = "complete_profile.html" //"http://85.210.0.161/agroAfrica/v1/user/profile/:id/complete_profile.html";
           window.location.href = '/agroAfrica/v1/user/'+localStorage.getItem('role')+'/profile/'+localStorage.getItem('user_id') + '/';
           //window.location.href = '/profile/id?'+localStorage.getItem('user_id') + '/';
         }
@@ -374,7 +374,7 @@ setInterval(function(){
 }, 100);
 
 $(document).ready(function(){
-  const AUTH_BACKEND_URL = 'http://localhost:5000';
+  const AUTH_BACKEND_URL = 'http://85.210.0.161';
   let profile = "profile";
     $.ajax({
       url: `${AUTH_BACKEND_URL}/agroAfrica/v1/user/${localStorage.getItem("role")}/${profile}/${localStorage.getItem("user_id")}/`,
@@ -471,8 +471,8 @@ window.location.href = "/";
 else{
 var UserName = localStorage.getItem("agroAfric_user_name");
 $("#name").text(UserName)
-//window.location.href = 'complete_profile.html?id='+user;///http://localhost:5000//agroAfrica/v1/user/profile/" + //localStorage.getItem('user_id') + "complete_profile.html";
-//  window.location.href = 'http://localhost:5000/agroAfrica/v1/user/profile/'+localStorage.getItem('user_id') +'/' + 'complete_profile.html';
+//window.location.href = 'complete_profile.html?id='+user;///http://85.210.0.161//agroAfrica/v1/user/profile/" + //localStorage.getItem('user_id') + "complete_profile.html";
+//  window.location.href = 'http://85.210.0.161/agroAfrica/v1/user/profile/'+localStorage.getItem('user_id') +'/' + 'complete_profile.html';
 window.location.href = '/profile/'+localStorage.getItem('user_id') +'/' + 'complete_profile.html';
 }
 }) */

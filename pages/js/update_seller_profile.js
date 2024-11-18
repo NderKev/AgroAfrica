@@ -11,10 +11,10 @@
               else{
                 var UserName = localStorage.getItem("agroAfric_user_name");
                 $("#name").text(UserName)
-                //window.location.href = 'complete_profile.html?id='+localStorage.getItem("user_id");///http://localhost:5000//agroAfrica/v1/user/profile/" + //localStorage.getItem('user_id') + "complete_profile.html";
+                //window.location.href = 'complete_profile.html?id='+localStorage.getItem("user_id");///http://85.210.0.161//agroAfrica/v1/user/profile/" + //localStorage.getItem('user_id') + "complete_profile.html";
 
 
-          var AUTH_BACKEND_URL = 'http://localhost:5000';
+          var AUTH_BACKEND_URL = 'http://85.210.0.161';
           let sellProf = document.getElementById("seller_profile")
           let addProds = document.getElementById("seller_settings")
           let sellProfile = document.getElementById("sellerProfile")
@@ -159,7 +159,7 @@
                   })
 
                   setInterval(function(){
-                    const BACKEND_URL = 'http://localhost:5000';
+                    const BACKEND_URL = 'http://85.210.0.161';
                       $.ajax({
                         url: `${BACKEND_URL}/agroAfrica/v1/user/${localStorage.getItem("role")}/profile/${localStorage.getItem("user_id")}/`,
                         dataType: "JSON",

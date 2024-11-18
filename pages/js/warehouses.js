@@ -14,7 +14,7 @@ $(document).ready(function(){
     else{
       var UserName = localStorage.getItem("agroAfric_user_name");
       $("#name").text(UserName)
-      let AUTH_BACKEND_URL = 'http://localhost:5000'
+      let AUTH_BACKEND_URL = 'http://85.210.0.161'
       $(logout).click(function(){
       localStorage.setItem('agroAfric_user_name', "");
       localStorage.setItem('user_id',"");
@@ -141,7 +141,7 @@ $(document).ready(function(){
   })
 
   setInterval(function(){
-    const BACKEND_URL = 'http://localhost:5000';
+    const BACKEND_URL = 'http://85.210.0.161';
       $.ajax({
         url: `${BACKEND_URL}/agroAfrica/v1/user/${localStorage.getItem("role")}/profile/${localStorage.getItem("user_id")}/`,
         dataType: "JSON",

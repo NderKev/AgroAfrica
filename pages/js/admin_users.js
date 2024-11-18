@@ -14,7 +14,7 @@ $(document).ready(function(){
     else{
       var UserName = localStorage.getItem("agroAfric_user_name");
       $("#name").text(UserName)
-      let AUTH_BACKEND_URL = 'http://localhost:5000'
+      let AUTH_BACKEND_URL = 'http://85.210.0.161'
       $(logout).click(function(){
       localStorage.setItem('agroAfric_user_name', "");
       localStorage.setItem('user_id',"");

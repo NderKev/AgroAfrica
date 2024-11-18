@@ -19,8 +19,8 @@ $(document).ready(function(){
         //$('#cartItems').text(cart_items);
         var UserName = localStorage.getItem("agroAfric_user_name");
        $("#name").text(UserName)
-        let AUTH_BACKEND_URL = 'http://localhost:5000';
-        //let AUTH_BACKEND_URL = 'http://localhost:5000';
+        let AUTH_BACKEND_URL = 'http://85.210.0.161';
+        //let AUTH_BACKEND_URL = 'http://85.210.0.161';
       let user_id = localStorage.getItem("user_id");
       function getDestination(user_id){
         var curr_loc = {};
@@ -160,7 +160,7 @@ $(document).ready(function(){
         }, 1000);
   
         setInterval(function(){
-          const BACKEND_URL = 'http://localhost:5000';
+          const BACKEND_URL = 'http://85.210.0.161';
             $.ajax({
               url: `${BACKEND_URL}/agroAfrica/v1/user/${localStorage.getItem("role")}/profile/${localStorage.getItem("user_id")}/`,
               dataType: "JSON",
